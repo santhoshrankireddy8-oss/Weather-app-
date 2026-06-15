@@ -1,31 +1,43 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Weather App</h1>
+  <div class="container">
 
-        <div class="search-box">
-            <input type="text" id="city" placeholder="Enter city name">
-            <button onclick="getWeather()">Search</button>
-        </div>
+    <h1>Weather App</h1>
 
-        <div id="weather-result">
-            <h2 id="city-name"></h2>
-            <p id="temperature"></p>
-            <p id="description"></p>
-            <p id="humidity"></p>
-            <p id="wind"></p>
-        </div>
+    <!-- INPUT BOX -->
+    <input type="text" id="city" placeholder="Enter city name">
+
+    <!-- SEARCH BUTTON -->
+    <button id="btn">Search</button>
+
+    <!-- RESULT AREA -->
+    <div class="result">
+
+      <h2 id="cityName">City: --</h2>
+
+      <h1 id="temp">-- °C</h1>
+
+      <p id="desc">Weather: --</p>
+
+      <p id="humidity">Humidity: --</p>
+
+      <p id="wind">Wind Speed: --</p>
+
     </div>
 
-    <script src="script.js"></script>
+  </div>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
