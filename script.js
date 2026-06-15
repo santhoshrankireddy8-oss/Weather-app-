@@ -1,4 +1,4 @@
-const apiKey = "abc123xyz456";
+const apiKey = "NEW_KEY_HERE";
 
 document.getElementById("btn").onclick = async function () {
 
