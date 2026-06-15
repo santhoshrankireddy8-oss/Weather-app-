@@ -4,7 +4,7 @@ document.getElementById("btn").addEventListener("click", getWeather);
 
 function getWeather() {
 
-    const city = document.getElementById("city").value;
+    const city= document.getElementById("city").value.trim();
 
     if (city === "") {
         alert("Enter city name");
