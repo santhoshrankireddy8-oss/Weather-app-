@@ -1,35 +1,24 @@
-const apiKey = "PASTE_YOUR_OPENWEATHER_API_KEY_HERE";
+const apiKey = "YOUR_KEY";
 
-document.getElementById("btn").addEventListener("click", getWeather);
+document.getElementById("btn").onclick = async function () {
 
-function getWeather() {
     const city = document.getElementById("city").value.trim();
-
-    if (city === "") {
-        alert("Please enter a city name");
-        return;
-    }
+    console.log(city);
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
+    const res = await fetch(url);
+    const data = await res.json();
 
-            console.log(data); // check errors
+    console.log(data);
 
-            if (data.cod != 200) {
-                alert("City not found or API error");
-                return;
-            }
+    if (data.cod != 200) {
+        alert("Error: " + data.message);
+        return;
+    }
 
-            document.getElementById("cityName").innerText = data.name;
-            document.getElementById("temp").innerText = data.main.temp + " °C";
-            document.getElementById("humidity").innerText = "Humidity: " + data.main.humidity + "%";
-            document.getElementById("wind").innerText = "Wind Speed: " + data.wind.speed + " m/s";
-        })
-        .catch(error => {
-            console.log(error);
-            alert("Network error");
-        });
-}
+    document.getElementById("cityName").innerText = data.name;
+    document.getElementById("temp").innerText = data.main.temp + " °C";
+    document.getElementById("humidity").innerText = "Humidity: " + data.main.humidity + "%";
+    document.getElementById("wind").innerText = "Wind: " + data.wind.speed + " m/s";
+};
