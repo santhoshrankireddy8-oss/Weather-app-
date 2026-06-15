@@ -11,7 +11,7 @@ function getWeather() {
         return;
     }
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    https://api.openweathermap.org/data/2.5/weather?q=Vijayawada&appid=YOUR_KEY&units=metric
 
     fetch(url)
         .then(res => res.json())
