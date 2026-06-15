@@ -1,46 +1,35 @@
-const apiKey = "your_actual_openweather_key";
+const apiKey = "PASTE_YOUR_OPENWEATHER_API_KEY_HERE";
 
 document.getElementById("btn").addEventListener("click", getWeather);
 
 function getWeather() {
-
-    const city= document.getElementById("city").value.trim();
+    const city = document.getElementById("city").value.trim();
 
     if (city === "") {
-        alert("Enter city name");
+        alert("Please enter a city name");
         return;
     }
 
-    https://api.openweathermap.org/data/2.5/weather?q=Vijayawada&appid=YOUR_KEY&units=metric
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     fetch(url)
-        .then(res => res.json())
+        .then(response => response.json())
         .then(data => {
 
-            console.log(data); // 🔥 IMPORTANT: check this in console
+            console.log(data); // check errors
 
-            // ❌ if API failed
-            if (data.cod !== 200) {
+            if (data.cod != 200) {
                 alert("City not found or API error");
                 return;
             }
 
-            // ✅ update UI safely
-            document.getElementById("cityName").innerText =
-                data.name;
-
-            document.getElementById("temp").innerText =
-                data.main?.temp + " °C";
-
-            document.getElementById("humidity").innerText =
-                "Humidity: " + data.main?.humidity + "%";
-
-            document.getElementById("wind").innerText =
-                "Wind Speed: " + data.wind?.speed + " m/s";
-
+            document.getElementById("cityName").innerText = data.name;
+            document.getElementById("temp").innerText = data.main.temp + " °C";
+            document.getElementById("humidity").innerText = "Humidity: " + data.main.humidity + "%";
+            document.getElementById("wind").innerText = "Wind Speed: " + data.wind.speed + " m/s";
         })
-        .catch(err => {
-            console.log(err);
+        .catch(error => {
+            console.log(error);
             alert("Network error");
         });
 }
